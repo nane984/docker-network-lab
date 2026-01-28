@@ -41,3 +41,10 @@ X_FRAME_OPTIONS = "DENY"
 
 # CSRF
 CSRF_TRUSTED_ORIGINS = ["https://mydomain.com", "localhost"]        #obavezno localhost obrisati za production
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "https://mydomain.com",
+    "localhost",                                                    # za produkciju obavezno obrisati localhost
+]
