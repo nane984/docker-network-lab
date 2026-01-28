@@ -14,17 +14,30 @@ sentry_sdk.init(
 )
 
 DEBUG = False
-ALLOWED_HOSTS = ["localhost", "web"]
+
+# Hostovi koji smeju da pristupe
+ALLOWED_HOSTS = ["mydomen.com", "localhost"]     #obavezno localhost obrisati za production
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
 
-SECURE_SSL_REDIRECT = True
+# SSL i HTTPS
+SECURE_SSL_REDIRECT = True                      # redirect HTTP -> HTTPS
+SESSION_COOKIE_SECURE = True                    # cookie samo preko HTTPS
+CSRF_COOKIE_SECURE = True                       # CSRF cookie samo preko HTTPS
 
+# HSTS (HTTP Strict Transport Security)
 SECURE_HSTS_SECONDS = 31536000 # 1 godina
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
+# XSS i Content Security
+SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
+# Clickjacking
 X_FRAME_OPTIONS = "DENY"
+
+
+# CSRF
+CSRF_TRUSTED_ORIGINS = ["https://mydomain.com", "localhost"]        #obavezno localhost obrisati za production
