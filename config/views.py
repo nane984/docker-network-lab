@@ -1,4 +1,4 @@
-from .task import some_task
+from .tasks.task import some_task
 from django.http import HttpResponse
 
 import logging

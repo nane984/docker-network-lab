@@ -5,3 +5,6 @@ celery              # task runner za sporije procese u backgroundu
 redis               # message queue (message broker)
 sentry-sdk>=1.40    # za monitoring na sajtu
 django-cors-headers # za cors
+
+pytest              # za testiranje
+pytest-django       # za testiranje
