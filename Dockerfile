@@ -15,39 +15,28 @@ ENV PYTHONUNBUFFERED=1
 # Kreiranje non-root usera
 # -------------------------------
 
-# Kreiramo sistemsku grupu i usera "django"
-# --system = nema login shell, manja prava
+# Kreiramo sistemsku grupu i usera "django"  --system = nema login shell, manja prava
 RUN addgroup --system django && adduser --system --ingroup django django
 
-# -------------------------------
 # Radni direktorijum aplikacije
-# -------------------------------
-
 WORKDIR /app
 
 # -------------------------------
 # Instalacija Python dependencija (ovo mora kao root)
-# -------------------------------
-
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-# -------------------------------
 # Kopiranje aplikacionog koda
-# -------------------------------
-
 COPY . .
+
+# Instaliraj curl
+RUN apt-get update && apt-get install -y curl
 
 # -------------------------------
 # Permissions
 # -------------------------------
 
 # Dajemo vlasništvo nad /app direktorijumom django useru
-# Ovo je KLJUČNO da bi non-root user mogao da:
-# - čita kod
-# - piše static fajlove
-# - piše logove (ako ih ima)
 RUN chown -R django:django /app
 
 # -------------------------------

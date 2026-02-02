@@ -1,5 +1,5 @@
 from .tasks.task import some_task
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 import logging
 
@@ -16,3 +16,7 @@ def test_view(request):
 def test_view2(request):
     a  = 1/0
     return HttpResponse("view 2 koji je pod greskom")
+
+
+def healthcheck(request):
+    return  JsonResponse({"status": "ok"})

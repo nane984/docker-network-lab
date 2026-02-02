@@ -25,6 +25,8 @@ SECURE_SSL_REDIRECT = True                      # redirect HTTP -> HTTPS
 SESSION_COOKIE_SECURE = True                    # cookie samo preko HTTPS
 CSRF_COOKIE_SECURE = True                       # CSRF cookie samo preko HTTPS
 
+SECURE_REDIRECT_EXEMPT = [r"^health/$"]         # da bi vracao health obicno, ne preko https
+
 # HSTS (HTTP Strict Transport Security)
 SECURE_HSTS_SECONDS = 31536000 # 1 godina
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
