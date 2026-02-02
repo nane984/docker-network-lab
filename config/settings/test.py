@@ -8,6 +8,8 @@ DATABASES = {
     }
 }
 
+
+#eager mode
 CELERY_TASK_ALWAYS_EAGER = True             # .delay() se izvršava odmah
 CELERY_TASK_EAGER_PROPAGATES = True         # → exception ide direktno u test (vidiš grešku)
 
