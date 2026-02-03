@@ -150,6 +150,19 @@ services:
       - ./uptime-kuma/data:/app/data
     networks:
       - backend
+
+  locust:
+    image: locustio/locust
+    container_name: locust
+    ports:
+      - "8089:8089"   # web UI
+    volumes:
+      - ./locust:/mnt/locust
+    working_dir: /mnt/locust
+    depends_on:
+      - web        # tvoj Django kontejner
+      - celery     # ako hoćeš da testira Celery tasks
+      - nginx
  
 
 
