@@ -32,19 +32,16 @@ COPY . .
 # Instaliraj curl
 RUN apt-get update && apt-get install -y curl
 
-# -------------------------------
 # Permissions
-# -------------------------------
-
 # Dajemo vlasništvo nad /app direktorijumom django useru
 RUN chown -R django:django /app
 
-# -------------------------------
-# Django static files
-# -------------------------------
 
+# Django static files
 # collectstatic mora da ima prava pisanja → zato ide PRE USER django
 RUN python manage.py collectstatic --noinput
+
+
 
 # -------------------------------
 # Prelazak na non-root user
