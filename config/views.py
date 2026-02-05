@@ -17,6 +17,3 @@ def test_view2(request):
     a  = 1/0
     return HttpResponse("view 2 koji je pod greskom")
 
-
-def healthcheck(request):
-    return  JsonResponse({"status": "ok"})

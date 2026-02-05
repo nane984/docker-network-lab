@@ -4,7 +4,7 @@ from config.tasks.emails import send_welcome_email_task
 from celery.exceptions import Retry
 
 #Unit test taska
-@pytest.mark.django_db
+@pytest.mark.django_db      # Ovaj test SME da koristi bazu podataka
 def test_send_welcome_email_task_calls_service():
     with patch("config.tasks.emails.send_welcome_email") as mock_send:
         send_welcome_email_task("test@example.com")
@@ -13,7 +13,7 @@ def test_send_welcome_email_task_calls_service():
 
 
 #Eager test - integrated test
-@pytest.mark.django_db
+@pytest.mark.django_db             # Ovaj test SME da koristi bazu podataka
 def test_send_welcome_email_task_delay():
     with patch("config.tasks.emails.send_welcome_email") as mock_send:
         send_welcome_email_task.delay("test@example.com")
@@ -22,7 +22,7 @@ def test_send_welcome_email_task_delay():
 
 
 # retry test
-@pytest.mark.django_db
+@pytest.mark.django_db          # Ovaj test SME da koristi bazu podataka
 def test_send_welcome_email_task_retries_on_exception():
 
     with patch(
