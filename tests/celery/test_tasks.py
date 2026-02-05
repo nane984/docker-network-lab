@@ -12,6 +12,7 @@ def test_send_welcome_email_task_calls_service():
         mock_send.assert_called_once_with("test@example.com")
 
 
+# eager test znaci da ne ceka delay() nego se izvrsava odmah. To smo u settings/test.py definisali
 #Eager test - integrated test
 @pytest.mark.django_db             # Ovaj test SME da koristi bazu podataka
 def test_send_welcome_email_task_delay():
